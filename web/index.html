@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/vex.css" />
+    <link rel="stylesheet" href="/css/vex-theme-os.css" />
     <title>JS exam</title>
   </head>
   <body>
@@ -15,17 +17,25 @@
         <input class="feedback" type="text" name="feedback" placeholder="Write your text here...">
         <br>
 
-        <label for="scale">On a scale of 1 to 10, how likely are you to recommend Green Fox Academy to a friend?</label>
+        <label class="label" for="scale">On a scale of 1 to 10, how likely are you to recommend Green Fox Academy to a friend?</label>
         <input class="scale" type="text" name="scale" placeholder="rating (1-10)">
 
         <br>
 
-        <label for="email">Please fill your e-mail adress</label>
-        <input class="email" type="text" name="email" placeholder="rating (1-10)">
+        <label class="label" for="email">Please fill your e-mail adress</label>
+        <input class="email" type="text" name="email" placeholder="Write your e-mail address here...">
         <button class="button" type="button" name="button">Send to Fox!</button>
       </form>
+      <h2 class="load-text"></h2>
+      <div class="response-list">
+        <ul>
+
+        </ul>
+      </div>
       </div>
     </main>
+    <script src="scripts/vex.combined.min.js"></script>
+    <script>vex.defaultOptions.className = 'vex-theme-os'</script>
     <script type="text/javascript" src="scripts/frontend.js"></script>
   </body>
 </html>
