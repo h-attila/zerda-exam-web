@@ -1,4 +1,4 @@
-//AJAX communication with server
+// AJAX communication with server
 var ajax = (function () {
 
   // Send data to the server
@@ -21,12 +21,12 @@ var ajax = (function () {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         var response = JSON.parse(httpRequest.response);
         if (response.status === 'error') {
-          console.log('error');
+          console.log('error in connection');
         }
         callbackFunc(response);
       }
     };
-  };
+  }
 
   return {
     // public functions
@@ -40,7 +40,7 @@ var app = (function () {
 
   // HTML front-side elements
   var button = document.querySelector('.button');
-  var loadText = document.querySelector('.load-text')
+  var loadText = document.querySelector('.load-text');
   var feedback = document.querySelector('.feedback');
   var scale = document.querySelector('.scale');
   var email = document.querySelector('.email');
@@ -53,30 +53,26 @@ var app = (function () {
     ajax.sendData(feedback.value, scale.value, email.value);
   });
 
-  function displayResults (response) {
+  function displayResults(response) {
     if (response.status === 'error') {
       responseList.innerHTML = '';
+      loadText.innerHTML = '';
       vex.dialog.alert(response.message);
     } else {
       responseList.innerHTML = '';
       loadText.innerHTML = 'Congratulation! Your secret projects are:';
-      response["projects"].forEach(function (item) {
+      response['projects'].forEach(function (item) {
         var listItem = document.createElement('li');
-        console.log(item);
         listItem.innerHTML = item.project_name;
-        console.log(listItem.innerHTML);
         responseList.appendChild(listItem);
       });
-
     }
   }
 
   return {
     // public functions
-    displayResults: displayResults
-
+    displayResults: displayResults,
   };
 })();
-
 
 app();

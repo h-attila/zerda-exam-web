@@ -6,8 +6,8 @@ body {
 }
 
 main {
-  height: 500px;
-  padding: 20px;
+  height: 600px;
+  padding: 50px;
   background-color: white;
 }
 
@@ -28,7 +28,7 @@ form {
 }
 
 p {
-  margin: 20px 0px;
+  margin: 5px 0px;
 }
 
 .feedback {
@@ -36,9 +36,5 @@ p {
 }
 
 li {
-  margin: 10px;
-}
-
-.lavel {
   margin: 10px;
 }
