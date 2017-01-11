@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
     <title>JS exam</title>
   </head>
   <body>
@@ -10,14 +11,21 @@
       <h1>The Greenfox Academy</h1>
       <p>Thank you for visiting our website! To get early access to our planned projects, please fill in the following quick questionnaire.</p>
       <form>
-        <label for="input">Describe your experience with Green Fox Academy so far</label>
-        <input class="text" type="text" name="input" placeholder="Write your text here...">
+        <label for="feedback">Describe your experience with Green Fox Academy so far</label>
+        <input class="feedback" type="text" name="feedback" placeholder="Write your text here...">
+        <br>
 
-        <label for="rating">On a scale of 1 to 10, how likely are you to recommend Green Fox Academy to a friend?</label>
-        <input class="rating" type="text" name="rating" placeholder="rating (1-10)">
+        <label for="scale">On a scale of 1 to 10, how likely are you to recommend Green Fox Academy to a friend?</label>
+        <input class="scale" type="text" name="scale" placeholder="rating (1-10)">
+
+        <br>
+
+        <label for="email">Please fill your e-mail adress</label>
+        <input class="email" type="text" name="email" placeholder="rating (1-10)">
         <button class="button" type="button" name="button">Send to Fox!</button>
       </form>
       </div>
     </main>
+    <script type="text/javascript" src="scripts/frontend.js"></script>
   </body>
 </html>
