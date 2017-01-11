@@ -14,20 +14,16 @@ var ajax = (function () {
     httpRequest.open(method, url, true);
     httpRequest.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
-    // if data exist
+    // if data exist, in no data, send empty form
     data ? httpRequest.send(JSON.stringify(data)) : httpRequest.send();
 
     httpRequest.onreadystatechange = function () {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         var response = JSON.parse(httpRequest.response);
-        if (response.status === 'error') {
-          console.log('error in connection');
-        }
         callbackFunc(response);
       }
     };
   }
-
   return {
     // public functions
     sendData: sendData,
@@ -48,16 +44,20 @@ var app = (function () {
 
   // Events handling
   button.addEventListener('click', function () {
-    console.log(feedback.value, scale.value, email.value);
     loadText.innerHTML = 'Loading ...';
     ajax.sendData(feedback.value, scale.value, email.value);
   });
 
+  // display projest list or alert box, depending from the response data
   function displayResults(response) {
+
+    // show alert box
     if (response.status === 'error') {
       responseList.innerHTML = '';
       loadText.innerHTML = '';
       vex.dialog.alert(response.message);
+
+      // show Top Secret project list
     } else {
       responseList.innerHTML = '';
       loadText.innerHTML = 'Congratulation! Your secret projects are:';
@@ -68,7 +68,6 @@ var app = (function () {
       });
     }
   }
-
   return {
     // public functions
     displayResults: displayResults,

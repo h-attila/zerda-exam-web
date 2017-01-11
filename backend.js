@@ -23,12 +23,13 @@ var app = server();
 app.use('/', server.static('web'));
 app.use(bodyParser.json());
 
-// Post data from fromt to decode, and send back
+// Post data from front to validate, and send back response
 app.post('/exam', function (req, res) {
   var feedback = req.body.feedback;
   var scale = parseInt(req.body.scale, 10);
   var email = req.body.email;
 
+  // checking if data is valid
   if (validator.emailOk(email) && validator.scaleOk(scale) && validator.feedbackOk(feedback)) {
     database.read(function (data) {
       responseOk.projects = data;
@@ -38,7 +39,6 @@ app.post('/exam', function (req, res) {
     res.status(200).json(responseErr);
   }
 });
-
 
 // database handling
 var database = (function () {
@@ -51,6 +51,7 @@ var database = (function () {
     database: 'secretprojects',
   });
 
+  // data read brom database
   function dataRead(callback) {
 
     connection.query('SELECT project_name FROM projects', function (err, data) {
